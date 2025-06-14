@@ -42,3 +42,39 @@ carousel.addEventListener('mouseleave', startAutoScroll);
 
 // Start it initially
 startAutoScroll();
+const gallery = document.getElementById('portraitGallery');
+let scrollTimer;
+let paused = false;
+
+function scrollNext() {
+  if (paused) return;
+  gallery.scrollBy({ left: gallery.clientWidth, behavior: 'smooth' });
+
+  // Wrap around if near the end
+  if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 10) {
+    setTimeout(() => {
+      gallery.scrollTo({ left: 0, behavior: 'smooth' });
+    }, 5000);
+  }
+}
+
+function startScroll() {
+  scrollTimer = setInterval(scrollNext, 5000);
+}
+
+function stopScroll() {
+  clearInterval(scrollTimer);
+}
+
+gallery.addEventListener('mouseenter', () => {
+  paused = true;
+  stopScroll();
+});
+
+gallery.addEventListener('mouseleave', () => {
+  paused = false;
+  startScroll();
+});
+
+startScroll();
+

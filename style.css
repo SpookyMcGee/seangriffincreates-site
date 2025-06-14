@@ -75,23 +75,18 @@ a {
 .gallery {
   display: flex;
   overflow-x: auto;
-  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   width: 100vw;
   height: 100vh;
-  animation: scrollGallery 40s linear infinite;
-}
-
-.gallery:hover {
-  animation-play-state: paused;
 }
 
 .gallery img {
+  flex: 0 0 100%;
   scroll-snap-align: start;
-  flex-shrink: 0;
+  object-fit: contain;
   width: 100vw;
   height: 100vh;
-  object-fit: contain;
 }
 
 .carousel {
