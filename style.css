@@ -115,3 +115,4 @@ a {
 @keyframes scrollGallery {
   0%   { scroll-behavior: auto; transform: translateX(0); }
   100% { transform: translateX(-100%); }
+}
