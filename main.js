@@ -1,4 +1,4 @@
-ffunction showSection(id) {
+function showSection(id) {
   document.querySelectorAll('.section').forEach(section => {
     section.classList.remove('active');
     section.classList.add('hidden');
