@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  background: #111;
+  overflow-x: hidden;
+}
+
 .section {
   display: none;
 }
@@ -10,23 +16,21 @@
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  position: relative;
 }
 
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
-  scroll-behavior: smooth;
+  will-change: transform;
 }
 
 .carousel-track img {
-  width: 100vw;         /* full screen per image */
   height: 100vh;
   object-fit: cover;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  width: 100vw; /* change to 50vw or 33.33vw for multiple visible */
 }
 
-/* Optional: multiple images visible on wide screens */
 @media (min-width: 768px) {
   .carousel-track img {
     width: 50vw;
