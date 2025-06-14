@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean Griffin Creates</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Sean Griffin Creates</h1>
+    <p class="tagline">Photographer. Creator. Dreamer of haunted pixels.</p>
+  </header>
+  <div class="container">
+    <nav>
+      <ul>
+        <li onclick="showSection('portraits')">Portraits</li>
+        <li onclick="showSection('boudoir')">Boudoir</li>
+        <li onclick="showSection('video')">Video</li>
+        <li onclick="showSection('analog')">Analog</li>
+        <li onclick="showSection('about')">About</li>
+      </ul>
+    </nav>
+    <main id="content">
+      <section id="portraits" class="section">[Add portraits to /images/portraits]</section>
+      <section id="boudoir" class="section hidden">[Add boudoir shots to /images/boudoir]</section>
+      <section id="video" class="section hidden">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+      </section>
+      <section id="analog" class="section hidden">[Add analog work to /images/analog]</section>
+      <section id="about" class="section hidden">
+        <p>Sean Griffin is a visual creator focused on evocative photography, surreal moments, and the emotional edges of everyday life.</p>
+        <p>📸 Instagram: <a href="https://instagram.com/SeanGriffinCreates" target="_blank">@SeanGriffinCreates</a></p>
+      </section>
+    </main>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
