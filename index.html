@@ -3,43 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Spooky Gallery</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Sean Griffin Creates - Image</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #ff4d4d;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+      text-align: center;
+    }
+
+    .hero-text {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+      border-radius: 5px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .image-grid {
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .image-card {
+      overflow: hidden;
+      border-radius: 5px;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #111;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Spooky McGee</h1>
-  </div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">Sean Griffin Creates</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Images</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="menu-toggle">☰</div>
+  </nav>
 
-  <div class="scroll-container" id="scrollGallery">
-    <img src="images/portraits/062.jpg" alt="Portrait">
-        <img src="images/portraits/116-Edit-2.jpg" alt="Portrait">
-        <img src="images/portraits/2016-05-10 163-Edit-2-2.jpg" alt="Portrait">
-        <img src="images/portraits/2017-05-20 721.jpg" alt="Portrait">
-        <img src="images/portraits/2017-12-03 175.jpg" alt="Portrait">
-        <img src="images/portraits/2018-07-10 031-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/2018-08-10 037-Edit-2-3.jpg" alt="Portrait">
-        <img src="images/portraits/2018-08-10 098-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/2019-01-30 200.jpg" alt="Portrait">
-        <img src="images/portraits/2019-04-06 522-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/2019-04-06 537.jpg" alt="Portrait">
-        <img src="images/portraits/2019-07-21 042-Recovered.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_0135-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_1610-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_1663-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_2217-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_2273-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_2526-Edit-3.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_2555-Edit-2.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_5731-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_6117-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_8079-Edit-2.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_8465-Edit-2.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_8896-Edit.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_9381-Edit-2.jpg" alt="Portrait">
-        <img src="images/portraits/IMG_9803-Edit-2.jpg" alt="Portrait">
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Image Showcase</h1>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- Image Grid -->
+  <section class="image-grid">
+    <!-- Your image list starts here -->
+    <div class="image-card"><img src="images/portraits/062.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/116-Edit-2.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2016-05-10 163-Edit-2-2.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2017-05-20 721.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2017-12-03 175.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2018-07-10 031-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2018-08-10 037-Edit-2-3.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2018-08-10 098-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2019-01-30 200.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2019-04-06 522-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2019-04-06 537.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/2019-07-21 042-Recovered.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_0135-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_1610-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_1663-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_2217-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_2273-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_2526-Edit-3.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_2555-Edit-2.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_5731-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_6117-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_8079-Edit-2.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_8465-Edit-2.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_8896-Edit.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_9381-Edit-2.jpg" alt="Portrait"></div>
+    <div class="image-card"><img src="images/portraits/IMG_9803-Edit-2.jpg" alt="Portrait"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Sean Griffin Creates. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    });
+  </script>
 </body>
 </html>
