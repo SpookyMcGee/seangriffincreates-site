@@ -36,7 +36,7 @@ gallery.addEventListener('mouseenter', () => isPaused = true);
 gallery.addEventListener('mouseleave', () => isPaused = false);
 
 // Start automatic scrolling
-setInterval(nextImage, 5000);
+setInterval(nextImage, 3000);
 
 
 

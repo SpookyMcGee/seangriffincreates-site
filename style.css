@@ -111,9 +111,10 @@ a {
 .carousel-track img {
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain; /* <-- this keeps the image fully visible */
   flex-shrink: 0;
 }
+
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
