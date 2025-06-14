@@ -1,23 +1,18 @@
-const track = document.querySelector('.carousel-track');
-const imgs = track.querySelectorAll('img');
-const imgCount = imgs.length;
-
-let index = 0;
+const scrollContainer = document.getElementById('scrollGallery');
 let paused = false;
 
-// Move to next slide
-function moveNext() {
-  if (paused) return;
-  index = (index + 1) % imgCount;
-  track.style.transform = `translateX(-${(100 / 3) * index}%)`;
+scrollContainer.addEventListener('mouseenter', () => paused = true);
+scrollContainer.addEventListener('mouseleave', () => paused = false);
+
+function autoScroll() {
+  if (!paused) {
+    scrollContainer.scrollLeft += 1;
+
+    // Loop to beginning if near the end
+    if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 2) {
+      scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }
 }
 
-// Pause on hover
-document.getElementById('portraitCarousel')
-  .addEventListener('mouseenter', () => paused = true);
-document.getElementById('portraitCarousel')
-  .addEventListener('mouseleave', () => paused = false);
-
-// Start auto‑scroll every 4 seconds (adjustable)
-let timer = setInterval(moveNext, 4000);
-
+setInterval(autoScroll, 20); // smooth and slow
