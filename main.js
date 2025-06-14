@@ -14,31 +14,37 @@ function showSection(id) {
 
 // Show default section
 showSection('portraits');
-const carousel = document.querySelector('.carousel');
+const carousel = document.getElementById('portraitGallery');
+let currentIndex = 0;
+let intervalId;
+let isPaused = false;
 
-let scrollAmount = 0;
-const scrollStep = 1;
-const delay = 20; // ms between scroll steps
-let autoScrollInterval;
-
-function startAutoScroll() {
-  autoScrollInterval = setInterval(() => {
-    if (carousel.scrollWidth - carousel.clientWidth <= scrollAmount) {
-      scrollAmount = 0;
-      carousel.scrollTo({ left: 0 });
-    } else {
-      scrollAmount += scrollStep;
-      carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
-    }
-  }, delay);
+function scrollToImage(index) {
+  const images = carousel.querySelectorAll('img');
+  if (images.length === 0) return;
+  const imageWidth = carousel.clientWidth;
+  carousel.scrollTo({
+    left: index * imageWidth,
+    behavior: 'smooth',
+  });
 }
 
-function stopAutoScroll() {
-  clearInterval(autoScrollInterval);
+function nextImage() {
+  if (isPaused) return;
+  const images = carousel.querySelectorAll('img');
+  currentIndex = (currentIndex + 1) % images.length;
+  scrollToImage(currentIndex);
 }
 
-carousel.addEventListener('mouseenter', stopAutoScroll);
-carousel.addEventListener('mouseleave', startAutoScroll);
+carousel.addEventListener('mouseenter', () => {
+  isPaused = true;
+});
+carousel.addEventListener('mouseleave', () => {
+  isPaused = false;
+});
+
+intervalId = setInterval(nextImage, 5000);
+
 
 // Start it initially
 startAutoScroll();
