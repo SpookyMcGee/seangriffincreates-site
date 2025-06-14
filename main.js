@@ -14,6 +14,7 @@ function showSection(id) {
 
 // Show default section
 showSection('portraits');
+
 const carouselTrack = document.querySelector('.carousel-track');
 const images = carouselTrack.querySelectorAll('img');
 let currentIndex = 0;
@@ -42,23 +43,7 @@ carousel.addEventListener('mouseleave', () => {
 
 intervalId = setInterval(nextImage, 5000);
 
-function startScroll() {
-  scrollTimer = setInterval(scrollNext, 5000);
-}
 
-function stopScroll() {
-  clearInterval(scrollTimer);
-}
 
-gallery.addEventListener('mouseenter', () => {
-  paused = true;
-  stopScroll();
-});
 
-gallery.addEventListener('mouseleave', () => {
-  paused = false;
-  startScroll();
-});
-
-startScroll();
 
