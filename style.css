@@ -74,23 +74,26 @@ a {
 }
 .gallery {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  width: 100vw;
+  height: 100vh;
+  animation: scrollGallery 40s linear infinite;
+}
+
+.gallery:hover {
+  animation-play-state: paused;
 }
 
 .gallery img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
- box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
-}
 .carousel {
   display: flex;
   overflow-x: auto;
@@ -109,3 +112,6 @@ a {
   scroll-snap-align: start;
   object-fit: cover;
 }
+@keyframes scrollGallery {
+  0%   { scroll-behavior: auto; transform: translateX(0); }
+  100% { transform: translateX(-100%); }
