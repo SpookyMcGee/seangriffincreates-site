@@ -1,6 +1,5 @@
-function showSection(id) {
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(section => {
+ffunction showSection(id) {
+  document.querySelectorAll('.section').forEach(section => {
     section.classList.remove('active');
     section.classList.add('hidden');
   });
@@ -12,13 +11,12 @@ function showSection(id) {
   }
 }
 
-// Show default section
+// --- Carousel Setup ---
 showSection('portraits');
 
 const carouselTrack = document.querySelector('.carousel-track');
 const images = carouselTrack.querySelectorAll('img');
 let currentIndex = 0;
-let intervalId;
 let isPaused = false;
 
 function updateCarousel() {
@@ -27,21 +25,19 @@ function updateCarousel() {
 }
 
 function nextImage() {
-  if (isPaused) return;
-  currentIndex = (currentIndex + 1) % images.length;
-  updateCarousel();
+  if (!isPaused) {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateCarousel();
+  }
 }
 
-const carousel = document.getElementById('portraitGallery');
+const gallery = document.getElementById('portraitGallery');
+gallery.addEventListener('mouseenter', () => isPaused = true);
+gallery.addEventListener('mouseleave', () => isPaused = false);
 
-carousel.addEventListener('mouseenter', () => {
-  isPaused = true;
-});
-carousel.addEventListener('mouseleave', () => {
-  isPaused = false;
-});
+// Start automatic scrolling
+setInterval(nextImage, 5000);
 
-intervalId = setInterval(nextImage, 5000);
 
 
 
