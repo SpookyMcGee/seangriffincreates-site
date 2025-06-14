@@ -14,29 +14,30 @@ function showSection(id) {
 // --- Carousel Setup ---
 showSection('portraits');
 
-const carouselTrack = document.querySelector('.carousel-track');
-const images = carouselTrack.querySelectorAll('img');
-let currentIndex = 0;
-let isPaused = false;
+const track = document.querySelector('.carousel-track');
+let scrollPos = 0;
+let paused = false;
 
-function updateCarousel() {
-  const offset = currentIndex * -100;
-  carouselTrack.style.transform = `translateX(${offset}vw)`;
-}
+function autoScroll() {
+  if (paused) return;
 
-function nextImage() {
-  if (!isPaused) {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateCarousel();
+  const imageWidth = track.querySelector('img').clientWidth;
+  scrollPos += imageWidth;
+
+  if (scrollPos >= track.scrollWidth - imageWidth) {
+    scrollPos = 0; // loop back
   }
+
+  track.scrollTo({
+    left: scrollPos,
+    behavior: 'smooth'
+  });
 }
 
-const gallery = document.getElementById('portraitGallery');
-gallery.addEventListener('mouseenter', () => isPaused = true);
-gallery.addEventListener('mouseleave', () => isPaused = false);
+track.addEventListener('mouseenter', () => paused = true);
+track.addEventListener('mouseleave', () => paused = false);
 
-// Start automatic scrolling
-setInterval(nextImage, 3000);
+setInterval(autoScroll, 3000);
 
 
 
