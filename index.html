@@ -1,42 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coming Soon - Sean Griffin Creates</title>
+  <title>Coming Soon - Sean Griffin Creations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   <style>
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      height: 100vh;
-      background-color: #111;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    html, body {
+      height: 100%;
+      font-family: 'Special Elite', monospace;
+      background-color: #fff;
     }
 
+ .container {
+  border: 10px solid white;
+  height: 100%;
+  background: url('images/portraits/116-Edit-2.jpg') center center no-repeat;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+    
+
     h1 {
-      font-size: 3rem;
-      letter-spacing: 2px;
+      font-size: 2.5rem;
+      color: black;
+      margin-bottom: 1rem;
     }
 
     p {
-      margin-top: 1rem;
-      color: #aaa;
+      font-size: 1.2rem;
+      color: black;
     }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+    .sub {
+  font-size: 1.2rem;
+  color: #000;
+  margin-top: 0.25rem;
+  font-family: 'Special Elite', monospace;
+}
+    .header {
+  background-color: white;
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid #ccc;
+}
+
+.header h1 {
+  color: black;
+  font-family: 'Special Elite', monospace;
+  font-size: 2rem;
+  margin: 0;
+}
+
   </style>
 </head>
 <body>
-  <div>
-    <h1>Coming Soon</h1>
-    <p>Sean Griffin Creates</p>
+<div class="header">
+  <h1>Sean Griffin Creations</h1>
+  <p class="sub">Coming Soon</p>
+</div>
+<div class="container"></div>
+
   </div>
 </body>
 </html>
