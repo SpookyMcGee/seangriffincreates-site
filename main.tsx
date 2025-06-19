@@ -7,4 +7,6 @@ root.render(
   <React.StrictMode>
     <FloatingBottomNav />
   </React.StrictMode>
+  import './style.css'; // wherever Tailwind's @tailwind base/components/utilities are defined
+
 );
