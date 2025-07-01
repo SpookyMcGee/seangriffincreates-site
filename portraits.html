@@ -140,7 +140,11 @@
 
     <section id="content" class="pt-16">
         <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-12 px-4 max-w-6xl mx-auto">
-            <!-- Images will be inserted here via JavaScript -->
+            <!-- Fallback images to prevent broken load -->
+            <a href="#" data-image="images/portraits/062.jpg">
+                <img src="images/portraits/062.jpg" alt="Portrait 1" onerror="this.style.display='none';">
+            </a>
+            <!-- More images will be added dynamically -->
         </div>
     </section>
 
@@ -164,6 +168,9 @@
             const modalImage = document.getElementById('modal-image');
             const closeBtn = document.querySelector('.close');
             const gallery = document.getElementById('gallery');
+
+            // Clear initial fallback and repopulate with shuffled images
+            gallery.innerHTML = '';
 
             // List of portrait images
             const images = [
@@ -210,7 +217,7 @@
                 const link = document.createElement('a');
                 link.href = '#';
                 link.setAttribute('data-image', imgSrc);
-                link.innerHTML = `<img src="${imgSrc}" alt="Portrait ${index + 1}">`;
+                link.innerHTML = `<img src="${imgSrc}" alt="Portrait ${index + 1}" onerror="this.style.display='none';">`;
                 gallery.appendChild(link);
             });
 
