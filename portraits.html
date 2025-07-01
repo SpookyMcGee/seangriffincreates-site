@@ -5,19 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sean Griffin Creates - Portraits</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             background-color: #000000 !important; /* Force black background */
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-        }
-        #splash {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         #content {
             padding-top: 60px; /* Space for nav bar */
@@ -47,6 +40,14 @@
         nav a:hover {
             color: #ffcc00; /* Yellow hover effect */
         }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
         .gallery a {
             display: block;
             text-align: center;
@@ -56,6 +57,7 @@
         .gallery img {
             width: 100%;
             height: auto;
+            object-fit: cover;
             transition: transform 0.3s ease;
         }
         .gallery img:hover {
@@ -63,12 +65,6 @@
         }
         /* Mobile Navigation */
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                padding: 1rem 0;
-            }
             .gallery {
                 grid-template-columns: 1fr; /* Single column on mobile */
             }
@@ -83,13 +79,13 @@
             color: #ffffff;
             cursor: pointer;
             padding: 0.5rem;
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
         }
         @media (max-width: 640px) {
             .menu-toggle {
                 display: block;
-                position: absolute;
-                top: 0.5rem;
-                right: 1rem;
             }
             nav ul {
                 display: none;
@@ -101,7 +97,7 @@
             }
         }
         .modal {
-            display: none;
+            display: none; /* Ensure modal starts hidden */
             position: fixed;
             top: 0;
             left: 0;
@@ -111,10 +107,12 @@
             z-index: 200;
             justify-content: center;
             align-items: center;
+            overflow: auto; /* Allow scrolling if image is large */
         }
         .modal-content {
             max-width: 90%;
             max-height: 90vh;
+            object-fit: contain;
         }
         .close {
             position: absolute;
@@ -138,23 +136,18 @@
         </ul>
     </nav>
 
-    <section id="content" class="pt-16">
-        <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-12 px-4 max-w-6xl mx-auto">
-            <!-- Fallback images to prevent broken load -->
-            <a href="#" data-image="images/portraits/062.jpg">
-                <img src="images/portraits/062.jpg" alt="Portrait 1" onerror="this.style.display='none';">
-            </a>
-            <!-- More images will be added dynamically -->
+    <section id="content">
+        <div id="gallery" class="gallery">
+            <!-- Gallery will be populated dynamically -->
         </div>
     </section>
 
     <!-- Modal for Zoom -->
-    <div id="modal" class="modal flex">
+    <div id="modal" class="modal">
         <span class="close">×</span>
         <img id="modal-image" class="modal-content" src="" alt="Zoomed Image">
     </div>
 
-    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.querySelector('.menu-toggle');
@@ -168,9 +161,6 @@
             const modalImage = document.getElementById('modal-image');
             const closeBtn = document.querySelector('.close');
             const gallery = document.getElementById('gallery');
-
-            // Clear initial fallback and repopulate with shuffled images
-            gallery.innerHTML = '';
 
             // List of portrait images
             const images = [
@@ -213,19 +203,29 @@
 
             // Shuffle images and populate gallery
             const shuffledImages = shuffle([...images]);
+            gallery.innerHTML = ''; // Ensure no initial content
             shuffledImages.forEach((imgSrc, index) => {
                 const link = document.createElement('a');
                 link.href = '#';
                 link.setAttribute('data-image', imgSrc);
-                link.innerHTML = `<img src="${imgSrc}" alt="Portrait ${index + 1}" onerror="this.style.display='none';">`;
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = `Portrait ${index + 1}`;
+                img.onload = () => console.log(`Loaded: ${imgSrc}`); // Debug load
+                img.onerror = () => {
+                    console.error(`Failed to load: ${imgSrc}`);
+                    img.style.display = 'none'; // Hide on error
+                };
+                link.appendChild(img);
                 gallery.appendChild(link);
             });
 
-            // Attach zoom event to dynamically added links
+            // Attach zoom event to dynamically added links with debug
             const galleryLinks = document.querySelectorAll('.gallery a');
             galleryLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
+                    console.log('Clicked:', link.getAttribute('data-image')); // Debug click
                     modalImage.src = link.getAttribute('data-image');
                     modal.style.display = 'flex';
                 });
