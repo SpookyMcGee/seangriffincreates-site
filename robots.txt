@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://seangriffincreates.com/sitemap.xml
