@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravens Immortal - Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CRT static overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0.1) 50%,
+                rgba(0, 0, 0, 0.25) 50%
+            );
+            background-size: 100% 2px;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 50;
+        }
+        /* Subtle CRT color shift animation */
+        .crt-glow {
+            animation: crtShift 15s infinite;
+        }
+        @keyframes crtShift {
+            0% { background-color: rgba(0, 255, 255, 0.05); }
+            50% { background-color: rgba(255, 0, 255, 0.05); }
+            100% { background-color: rgba(0, 255, 255, 0.05); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans flex items-center justify-center min-h-screen crt-glow">
+    <div class="text-center">
+        <img src="images/logo/camplogo.png" alt="Ravens Immortal Logo" class="max-w-xs mx-auto">
+        <p class="text-3xl mt-4">Coming Soon</p>
+    </div>
+</body>
+</html>
