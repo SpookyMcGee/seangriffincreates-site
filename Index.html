@@ -117,17 +117,16 @@
 
     <!-- Content Section with Nav and Gallery -->
     <section id="content">
-       <!-- Navigation Bar with Toggle -->
+        
+<!-- Navigation Bar with Toggle -->
 <nav class="fixed top-0 w-full bg-black bg-opacity-80 z-100 p-4">
     <div class="menu-toggle hidden md:block text-white text-2xl cursor-pointer p-2" aria-label="Toggle menu">☰</div>
     <ul class="flex justify-center gap-8 list-none m-0 p-0">
-        <li><a href="portraits.html" class="text-white font-bold p-2 hover:text-yellow-400">Portraits</a></li>
-        <li><a href="boudoir.html" class="text-white font-bold p-2 hover:text-yellow-400">Boudoir</a></li>
-        <li><a href="places.html" class="text-white font-bold p-2 hover:text-yellow-400">Places</a></li>
-        <li><a href="bands.html" class="text-white font-bold p-2 hover:text-yellow-400">Bands</a></li>
-        <li><a href="analog.html" class="text-white font-bold p-2 hover:text-yellow-400">Analog</a></li>
+        <li><a href="#photos" class="text-white font-bold p-2 hover:text-yellow-400">Photos</a></li>
         <li><a href="#videos" class="text-white font-bold p-2 hover:text-yellow-400">Videos</a></li>
+        <li><a href="#sites" class="text-white font-bold p-2 hover:text-yellow-400">Sites</a></li>
         <li><a href="#about" class="text-white font-bold p-2 hover:text-yellow-400">About</a></li>
+        <li><a href="https://yourwordpresssite.com" class="text-white font-bold p-2 hover:text-yellow-400" target="_blank" rel="noopener noreferrer">Blog</a></li>
     </ul>
 </nav>
 
@@ -168,6 +167,18 @@
             console.warn('Menu toggle or nav ul not found');
         }
 
+        // Smooth scroll for internal links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    navUl.classList.add('hidden'); // Hide menu on mobile after click
+                }
+            });
+        });
+
         // Mobile toggle visibility
         const handleResize = () => {
             if (window.innerWidth > 640) {
@@ -203,6 +214,12 @@
     .gallery img:hover {
         transform: scale(1.05);
     }
+    #sites img {
+        transition: transform 0.3s ease;
+    }
+    #sites img:hover {
+        transform: scale(1.05);
+    }
 </style>
 
 <!-- Videos Section -->
@@ -216,6 +233,18 @@
   </div>
 </section>
 
+<!-- Sites Section 
+<div id="sites" class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-12 px-4 max-w-6xl mx-auto">
+    <a href="https://spookymcgee.com" target="_blank" rel="noopener noreferrer" class="text-center text-white">
+        <img src="images/sites/spookymcgee-screenshot.png" alt="SpookyMcGee.com" class="w-48 h-48 object-cover">
+        <p class="mt-2">SpookyMcGee</p>
+    </a>
+    <a href="https://ravensimmortal.com" target="_blank" rel="noopener noreferrer" class="text-center text-white">
+        <img src="images/sites/ravensimmortal-screenshot.png" alt="RavensImmortal.com" class="w-48 h-48 object-cover">
+        <p class="mt-2">RavensImmortal</p>
+    </a>
+</div>
+-->
      <!-- About Me Section -->
 <section id="about" class="py-12">
   <div class="max-w-3xl mx-auto px-4 text-center">
