@@ -117,43 +117,93 @@
 
     <!-- Content Section with Nav and Gallery -->
     <section id="content">
-        <!-- Navigation Bar with Toggle -->
-        <nav>
-            <div class="menu-toggle">☰</div>
-            <ul>
-                <li><a href="#photos">Photos</a></li>
-                <li><a href="#videos">Videos</a></li>
-                <li><a href="#sites">Sites</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
+       <!-- Navigation Bar with Toggle -->
+<nav class="fixed top-0 w-full bg-black bg-opacity-80 z-100 p-4">
+    <div class="menu-toggle hidden md:block text-white text-2xl cursor-pointer p-2" aria-label="Toggle menu">☰</div>
+    <ul class="flex justify-center gap-8 list-none m-0 p-0">
+        <li><a href="portraits.html" class="text-white font-bold p-2 hover:text-yellow-400">Portraits</a></li>
+        <li><a href="boudoir.html" class="text-white font-bold p-2 hover:text-yellow-400">Boudoir</a></li>
+        <li><a href="places.html" class="text-white font-bold p-2 hover:text-yellow-400">Places</a></li>
+        <li><a href="bands.html" class="text-white font-bold p-2 hover:text-yellow-400">Bands</a></li>
+        <li><a href="analog.html" class="text-white font-bold p-2 hover:text-yellow-400">Analog</a></li>
+        <li><a href="#videos" class="text-white font-bold p-2 hover:text-yellow-400">Videos</a></li>
+        <li><a href="#about" class="text-white font-bold p-2 hover:text-yellow-400">About</a></li>
+    </ul>
+</nav>
 
-        <!-- Gallery Section -->
-      <div class="gallery grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 py-12 px-4 max-w-6xl mx-auto">
-    <a href="#portraits">
-        <img src="images/Site Buttons/portrait button.png" alt="Portraits">
-        <p>Portraits</p>
+<!-- Gallery Section -->
+<div id="photos" class="gallery grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 py-12 px-4 max-w-6xl mx-auto mt-20">
+    <a href="portraits.html" class="text-center text-white">
+        <img src="images/Site Buttons/portrait button.png" alt="Portraits" class="w-full h-auto">
+        <p class="mt-2">Portraits</p>
     </a>
-    <a href="#boudoir">
-        <img src="images/Site Buttons/boudoir button.png" alt="Boudoir">
-        <p>Boudoir</p>
+    <a href="boudoir.html" class="text-center text-white">
+        <img src="images/Site Buttons/boudoir button.png" alt="Boudoir" class="w-full h-auto">
+        <p class="mt-2">Boudoir</p>
     </a>
-    <a href="#places">
-        <img src="images/Site Buttons/places button.png" alt="Places">
-        <p>Places</p>
+    <a href="places.html" class="text-center text-white">
+        <img src="images/Site Buttons/places button.png" alt="Places" class="w-full h-auto">
+        <p class="mt-2">Places</p>
     </a>
+    <a href="bands.html" class="text-center text-white">
+        <img src="images/Site Buttons/bands button.png" alt="Bands" class="w-full h-auto">
+        <p class="mt-2">Bands</p>
+    </a>
+    <a href="analog.html" class="text-center text-white">
+        <img src="images/Site Buttons/analog button.png" alt="Analog" class="w-full h-auto">
+        <p class="mt-2">Analog</p>
+    </a>
+</div>
 
-    <!-- Add Bands and Analog back if desired -->
-     <a href=""#bands">
-        <img src="images/Site Buttons/bands button.png" alt="Bands">
-        <p>Bands</p>
-     </a>  
-    <a href="#analog">
-        <img src="images/Site Buttons/analog button.png" alt="Analog">
-        <p>Analog</p>
-    </a>
-</section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navUl = document.querySelector('nav ul');
+        if (menuToggle && navUl) {
+            menuToggle.addEventListener('click', () => {
+                navUl.classList.toggle('hidden');
+                navUl.classList.toggle('flex');
+            });
+        } else {
+            console.warn('Menu toggle or nav ul not found');
+        }
+
+        // Mobile toggle visibility
+        const handleResize = () => {
+            if (window.innerWidth > 640) {
+                navUl.classList.remove('hidden');
+                navUl.classList.add('flex');
+            } else {
+                navUl.classList.add('hidden');
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial call
+    });
+</script>
+
+<style>
+    @media (max-width: 640px) {
+        .menu-toggle {
+            display: block;
+        }
+        nav ul {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+        nav ul.hidden {
+            display: none;
+        }
+    }
+    .gallery img {
+        transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+        transform: scale(1.05);
+    }
+</style>
 
 <!-- Videos Section -->
 <section id="videos" class="py-12">
