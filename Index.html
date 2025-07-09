@@ -109,6 +109,7 @@
                 navUl.classList.toggle('active');
             });
         });
+        
     </script>
 </head>
 <body>
@@ -193,6 +194,7 @@
         window.addEventListener('resize', handleResize);
         handleResize(); // Initial call
     });
+    
 </script>
 
 <style>
@@ -253,9 +255,48 @@
     <p class="text-lg">Hey, I’m Sean. I make things — books, photos, websites, sometimes weird art. This site’s a home for all the creative chaos I’ve collected and created over the years. If it tells a story or sparks something real, I’m in.</p>
 </section>
 
-<!-- Close any wrapping content section or div if it exists -->
-</section> <!-- Only if you have <section id="content"> earlier -->
-</div>     <!-- Only if you have a wrapping <div> earlier -->
+    <!-- Blog Feed Section -->
+<section id="blog-feed" class="py-12 px-4 text-center text-white">
+  <h2 class="text-2xl font-bold mb-6">Latest Blog Posts</h2>
+  <div id="feed-container" class="space-y-4"></div>
+  <p class="mt-6 text-sm text-gray-400">
+    <a href="https://medium.com/@netherlainsean" target="_blank" rel="noopener noreferrer" class="underline text-yellow-400">
+      View all posts on Medium →
+    </a>
+  </p>
+</section>
+
+    <script>
+const feedContainer = document.getElementById("feed-container");
+const mediumRssFeed = "https://medium.com/feed/@netherlainsean";
+const rssToJsonAPI = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumRssFeed)}`;
+
+fetch(rssToJsonAPI)
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'ok') {
+      data.items.slice(0, 3).forEach(post => {
+        const postEl = document.createElement("div");
+        postEl.className = "bg-black bg-opacity-30 border border-gray-700 p-4 rounded-md";
+
+        postEl.innerHTML = `
+          <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="text-yellow-400 text-xl font-semibold hover:underline">${post.title}</a>
+          <p class="text-sm mt-2 text-gray-300">${new Date(post.pubDate).toLocaleDateString()}</p>
+          <p class="text-white mt-2">${post.description.slice(0, 150)}...</p>
+        `;
+
+        feedContainer.appendChild(postEl);
+      });
+    } else {
+      feedContainer.innerHTML = "<p>Unable to load blog posts right now.</p>";
+    }
+  })
+  .catch(error => {
+    console.error("Error fetching Medium posts:", error);
+    feedContainer.innerHTML = "<p>Error loading blog feed.</p>";
+  });
+</script>
+
 
 </body>
 </html>
