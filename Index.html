@@ -136,28 +136,68 @@
 </nav>
 
 <!-- Gallery Section -->
-<div id="photos" class="gallery grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 py-12 px-4 max-w-6xl mx-auto mt-20">
-    <a href="portraits.html" class="text-center text-white">
-        <img src="images/Site Buttons/portrait button.png" alt="Portraits" class="w-full h-auto">
-        <p class="mt-2">Portraits</p>
-    </a>
-    <a href="boudoir.html" class="text-center text-white">
-        <img src="images/Site Buttons/boudoir button.png" alt="Boudoir" class="w-full h-auto">
-        <p class="mt-2">Boudoir</p>
-    </a>
-    <a href="places.html" class="text-center text-white">
-        <img src="images/Site Buttons/places button.png" alt="Places" class="w-full h-auto">
-        <p class="mt-2">Places</p>
-    </a>
-    <a href="bands.html" class="text-center text-white">
-        <img src="images/Site Buttons/bands button.png" alt="Bands" class="w-full h-auto">
-        <p class="mt-2">Bands</p>
-    </a>
-    <a href="analog.html" class="text-center text-white">
-        <img src="images/Site Buttons/analog button.png" alt="Analog" class="w-full h-auto">
-        <p class="mt-2">Analog</p>
-    </a>
+<div id="photos" class="gallery grid [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))] gap-6 py-12 px-4 max-w-screen-2xl mx-auto mt-20">
+  <!-- Portraits -->
+  <a href="portraits.html" class="group block text-center text-white">
+    <picture>
+      <source media="(min-width: 768px)" srcset="images/Site Buttons/portrait desktop.png" />
+      <source media="(max-width: 767px)" srcset="images/Site Buttons/portrait mobile.png" />
+      <img src="images/Site Buttons/portrait button.png" alt="Portraits"
+           class="block w-full h-auto rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
+           loading="lazy" decoding="async" />
+    </picture>
+    <p class="mt-2">Portraits</p>
+  </a>
+
+  <!-- Boudoir -->
+  <a href="boudoir.html" class="group block text-center text-white">
+    <picture>
+      <source media="(min-width: 768px)" srcset="images/Site Buttons/boudoir desktop.png" />
+      <source media="(max-width: 767px)" srcset="images/Site Buttons/boudoir mobile.png" />
+      <img src="images/Site Buttons/boudoir button.png" alt="Boudoir"
+           class="block w-full h-auto rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
+           loading="lazy" decoding="async" />
+    </picture>
+    <p class="mt-2">Boudoir</p>
+  </a>
+
+  <!-- Places -->
+  <a href="places.html" class="group block text-center text-white">
+    <picture>
+      <source media="(min-width: 768px)" srcset="images/Site Buttons/places desktop.png" />
+      <source media="(max-width: 767px)" srcset="images/Site Buttons/places mobile.png" />
+      <img src="images/Site Buttons/places button.png" alt="Places"
+           class="block w-full h-auto rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
+           loading="lazy" decoding="async" />
+    </picture>
+    <p class="mt-2">Places</p>
+  </a>
+
+  <!-- Bands -->
+  <a href="bands.html" class="group block text-center text-white">
+    <picture>
+      <source media="(min-width: 768px)" srcset="images/Site Buttons/bands desktop.png" />
+      <source media="(max-width: 767px)" srcset="images/Site Buttons/bands mobile.png" />
+      <img src="images/Site Buttons/bands button.png" alt="Bands"
+           class="block w-full h-auto rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
+           loading="lazy" decoding="async" />
+    </picture>
+    <p class="mt-2">Bands</p>
+  </a>
+
+  <!-- Analog -->
+  <a href="analog.html" class="group block text-center text-white">
+    <picture>
+      <source media="(min-width: 768px)" srcset="images/Site Buttons/analog desktop.png" />
+      <source media="(max-width: 767px)" srcset="images/Site Buttons/analog mobile.png" />
+      <img src="images/Site Buttons/analog button.png" alt="Analog"
+           class="block w-full h-auto rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
+           loading="lazy" decoding="async" />
+    </picture>
+    <p class="mt-2">Analog</p>
+  </a>
 </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
