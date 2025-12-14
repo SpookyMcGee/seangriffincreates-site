@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Writings • Sean Griffin Creates</title>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writings • Sean Griffin Creates</title>
+
+  <!-- Tailwind CDN (needed for the nav classes to work) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Your custom styles (writing-page, etc.) -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-black text-white">
+
+  <!-- Global Navigation (NOW inside <body>, not <head>) -->
+  <nav class="fixed inset-x-0 top-0 z-50 bg-black/80 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-4 md:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo / Home link -->
+        <a href="/index.html" class="flex items-center gap-2 text-white">
+          <span class="text-xs tracking-[0.25em] uppercase">
+            Sean Griffin Creates
+          </span>
+        </a>
+
+        <!-- Desktop menu -->
+        <ul class="hidden md:flex items-center gap-8 text-sm tracking-[0.2em] uppercase">
+          <li>
+            <a href="/index.html#photos" class="text-white font-bold p-2 hover:text-yellow-400">
+              Photos
+            </a>
+          </li>
+          <li>
+            <a href="/index.html#videos" class="text-white font-bold p-2 hover:text-yellow-400">
+              Videos
+            </a>
+          </li>
+          <li>
+            <a href="/index.html#sites" class="text-white font-bold p-2 hover:text-yellow-400">
+              Sites
+            </a>
+          </li>
+          <li>
+            <a href="/index.html#about" class="text-white font-bold p-2 hover:text-yellow-400">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="/writings.html" class="text-white font-bold p-2 hover:text-yellow-400">
+              Writings
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://medium.com/@netherlainsean"
+              class="text-white font-bold p-2 hover:text-yellow-400"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Blog
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile menu button -->
+        <button
+          type="button"
+          class="md:hidden text-white text-2xl p-2"
+          aria-label="Toggle navigation"
+          data-nav-toggle
+        >
+          ☰
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="md:hidden border-t border-neutral-800 pb-3" data-nav-menu>
+        <ul class="flex flex-col gap-1 pt-2 text-xs tracking-[0.2em] uppercase">
+          <li>
+            <a href="/index.html#photos" class="block text-white font-bold py-1 hover:text-yellow-400">
+              Photos
+            </a>
+          </li>
+          <li>
+            <a href="/index.html#videos" class="block text-white font-bold py-1 hover:text-yellow-400">
+              Videos
+            </a>
+          </li>
+          <li>
+            <a href="/index.html#sites" class="block text-white font-bold py-1 hover:text-yellow-400">
+              Sites
+            </a>
+          </li>
+          <li>
+            <a href="/index.html#about" class="block text-white font-bold py-1 hover:text-yellow-400">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="/writings.html" class="block text-white font-bold py-1 hover:text-yellow-400">
+              Writings
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://medium.com/@netherlainsean"
+              class="block text-white font-bold py-1 hover:text-yellow-400"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Blog
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content: add padding-top so it clears the fixed nav -->
+  <main class="pt-24">
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --bg-alt: #121212;
+      --card-bg: #181818;
+      --text-main: #f5f5f5;
+      --text-muted: #b3b3b3;
+      --accent: #f5e08c; /* soft highlight if you want it */
+      --border-subtle: #2a2a2a;
+      --max-width: 900px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    .writing-page {
+      min-height: 100vh;
+      padding: 4rem 1.5rem 5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .writing-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .writing-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .writing-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 0 0.75rem;
+    }
+
+    .writing-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .writing-divider {
+      width: 80px;
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 0.75rem auto 0;
+    }
+
+    /* CATEGORY NAV (optional) */
+    .writing-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .writing-nav button,
+    .writing-nav a {
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      border-radius: 999px;
+    }
+
+    .writing-nav button.active,
+    .writing-nav a.active {
+      color: var(--text-main);
+      border-color: var(--accent);
+    }
+
+    /* SECTION LABELS */
+    .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    /* GRID / LIST LAYOUT */
+    .writing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* CARD STYLING */
+    .writing-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      padding: 1.35rem 1.5rem 1.25rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    .writing-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .writing-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .writing-card-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .writing-card-body {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      white-space: pre-wrap; /* keeps line breaks for poems */
+    }
+
+    /* FOOTER LINK TO BLOG / MEDIUM */
+    .writing-footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .writing-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent);
+    }
+
+    .writing-footer a:hover {
+      border-bottom-style: solid;
+    }
+
+    /* RESPONSIVE TWEAKS */
+    @media (max-width: 600px) {
+      .writing-card {
+        padding: 1.1rem 1.1rem 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- WRITING PAGE -->
+  <main class="writing-page">
+    <div class="writing-inner">
+      <!-- Header -->
+      <header class="writing-header">
+        <h1 class="writing-title">Writings</h1>
+        <p class="writing-subtitle">
+          Poems, fragments, and short pieces from the same place my photos
+          and stories come from. Some of these made it into bigger works.
+          Some live here on purpose.
+        </p>
+        <div class="writing-divider"></div>
+      </header>
+
+      <!-- Optional category nav (anchor links or buttons) -->
+
+ <nav class="writing-nav" aria-label="Writing categories">
+  <button class="active" type="button" data-target="top">All</button>
+  <button type="button" data-target="poems">Poems</button>
+  <button type="button" data-target="songs">Songs</button>
+  <button type="button" data-target="stories">Short stories</button>
+
+        <!-- Hook JS later if you want filter behavior -->
+      </nav>
+
+      <!-- POEMS SECTION -->
+      <section id="poems" aria-labelledby="poems-label" style="margin-bottom: 2.5rem;">
+  <div id="poems-label" class="section-label">Poems</div>
+        <div class="writing-grid">
+          <!-- CARD 1 -->
+          <article class="writing-card">
+            <div class="writing-card-header">
+              <h2 class="writing-card-title">Maybe IDK Maybe</h2>
+              <span class="writing-card-meta">Poem • Mid 20s, lost</span>
+            </div>
+            <div class="writing-card-body">
+Maybe It’s something I don’t know how to speak
+Because I’m not sure what it is that I seek
+As of right now, my impending future
+Is feeling just a little bit bleak
+
+Is self-infliction the solution?
+A suicidal delusion
+Or is this pain situational
+Am I just overly emotional?
+
+I don’t know where to go, 
+I’m not sure
+Cause over a decade ago 
+I’m still here
+Replaying the same old episode
+I’m placing the things I care
+Right out the window
+
+What’s holding me back?
+Is it bravery I lack?
+I’m drowning in obscurity
+Maybe it’s all insecurity
+
+So where do I go from here?
+That’s better than yesteryear
+Somewhere else, I want to be somewhere
+I think to myself that maybe
+I won’t be erased
+Or am I too lazy?
+
+Over a decade ago
+I sat at a white screen
+A flashing cursor waiting on me
+Gathering the words
+That’ll help me be seen
+
+Fast forward, future
+I’m still that same old creature
+Facing an empty screen
+My reflection is relieving the memories
+What’s holding me back?
+
+            </div>
+          </article>
+
+          <!-- CARD 2 -->
+          <article class="writing-card">
+            <div class="writing-card-header">
+              <h2 class="writing-card-title">Lost Meadows</h2>
+              <span class="writing-card-meta">poem • mid 20s</span>
+            </div>
+            <div class="writing-card-body">
+Do you remember?
+
+The clouds at night
+With the glimpse of space
+All the stars above the woods
+
+Do you remember?
+
+The times that you could
+Look out upon nature
+With your arms stretched out
+And your hands in a grip
+To climb upon a majestic tree
+Reaching up with every grasp
+Holding onto every branch
+So you can touch the stars
+
+Do you remember?
+
+The noises and voices
+That we made when we gathered
+Our laughter our joy
+Spreading through the forest
+Like leaves on a harsh wind
+Out from our quiet town
+
+Listen to that echo from autumn
+That sound, the noise, a rhythm
+From the whispering woods
+Where we met at campfires
+In the midst of the autumn night
+That had flames dancing in a daze
+Wind spinning and twirls
+Leaves floating on its swirls
+
+Our dreams, our phantasms
+Flowing out from our windows
+Where we once slept and slumbered
+And on the rooftops of our homes
+We threw out our nets
+Just to catch every fallen star
+
+In between those moments
+After the last comet vanished
+Fading back into space
+We try to reach out and touch
+The fragile eggshell of a sky
+
+I remember these echoes of autumn
+
+The symphony of innocence
+The reflection of youth
+
+And within these quiet streets
+The pathways and roads we roamed
+These memories are written
+On the pages of our consciences
+Each letter magical
+Each memory valuable
+Like words written in fairy tales
+
+And the songs we sang in the past
+Are stitched into our hearts
+All the echoes ring within
+Every hum, whistle, verse and chord
+Can still be heard
+When we close our eyes
+
+In these times
+When the night returns
+And the silence begins to speak
+It comes to show us
+To give us meaning
+To give us imagination
+That grant us remembrance
+
+And within its whisper it asks us
+
+Do you remember dreaming
+Of the nothing and nowhere?
+
+Do you remember creating
+Your emporium of imagination?
+
+And do you remember living
+Out here in the echoes of autumn?
+
+          </article>
+           <!-- CARD 3 -->
+          <article class="writing-card">
+            <div class="writing-card-header">
+              <h2 class="writing-card-title">Eternal Birds</h2>
+              <span class="writing-card-meta">poem • mid 20s</span>
+            </div>
+            <div class="writing-card-body">
+To the stars and the moon
+We danced away like fireflys
+Caught up in the winds
+And like such with our light
+We gave away to the dark
+
+But was once my truth
+Became reveled a lie
+and for all that I did
+I can say at least I tried
+But in the end of the fire
+We turned to our ashes
+Like rebirth from the old
+It was all apart of our faith
+
+We claim to be ravens 
+And our lives where merely immortal
+Our paths held strong in stones
+We knew what our desires where
+Our oath written in our bones
+Every lyrics we sang
+Scream like a hawk
+Swoon like a blue jay
+Birds of prey 
+And birds of joy
+
+And within our shadow
+We held a deepest light
+Belief of new elder Gods
+And our auras where bright
+Every midnight battle
+We scream we will fight
+And within this alone
+We would write our songs
+A belief that the Raven
+Was purely immortal
+
+So now the days have gone along ago
+And here I am at the edge of the world
+And you shine like a light house
+Your edge of the world
+Has the brightest stars
+My feet hang off the edge
+Abyss below me awaits my fall
+And I wonder as I look to the elder faith
+Will you hear my call 
+And come face your darkest beauty
+        </div>
+        </article>
+      </section>
+
+<!-- SONGS SECTION -->
+<section id="songs" aria-labelledby="songs-label" style="margin-bottom: 2.5rem;">
+  <div id="songs-label" class="section-label">Songs</div>
+
+  <div class="writing-grid">
+
+    <!-- SONG CARD 1 -->
+    <article class="writing-card">
+      <div class="writing-card-header">
+        <h2 class="writing-card-title">Crescent Flower</h2>
+        <span class="writing-card-meta">Song • Ravens Immortal era</span>
+      </div>
+      <div class="writing-card-body">
+Something different strikes the mood
+Like feeling the cold shoulder
+Of the blue moon
+I hope the time comes soon
+Tonight’s different 
+As it could be
+Maybe I’ll carry a bouquet 
+Of eloquence and things of beauty
+And as different as I may seem
+I’ll at least try
+To be dear to you
+Cause I too,
+Dream
+Of shades of violet and blue
+Please understand what I say
+That by the rise of the midnight moon
+We’ll dance 
+till dawn breaks to the day
+
+Dance underneath the petals
+Falling off the crescent flower
+Shine on with your strength
+In your eyes I see the stars
+And the beauty of your power
+I don’t care for the sands of time
+Nor the long walks to the moon
+As long as under this stary sky
+I’ll meet you soon
+
+Now all will be said and told
+Even though I should hush 
+Yet I’ll remain bold
+This boy shouldn’t speak
+Gossip and secrets that I should keep
+But oh well, live with no regrets
+The gates that protect my heart
+Unlock with your words as a key
+I’m vulnerable, I’m the window
+And you’re the rock
+Go right through me
+Feed my head with your words
+To clear out the haze
+I’ll live for the coming days
+This world no longer colored in gray
+You first colored in the violet
+Like a new moon rising
+How my heart falls
+Shouldn’t be so surprising
+
+
+Dance underneath the petals
+Falling off the crescent flower
+Shine on with your strength
+In your eyes I see the stars
+And the beauty of your power
+I don’t care for the sands of time
+Nor the long walks to the moon
+As long as under this stary sky
+I’ll meet you soon
+
+
+We Are
+Hinting that this is our last imagination
+Yet we’re more than just creation
+Not so far
+From the truth we seek
+Our future doesn’t seem so bleak
+So Bizzare
+How long will this go on for?
+We’re stepping through that door
+Blue star
+First sight on the horizon
+There’s no comparison
+Dance with me
+
+Dance underneath the petals
+Falling off the crescent flower
+Shine on with your strength
+In your eyes I see the stars
+And the beauty of your power
+I don’t care for the sands of time
+Nor the long walks to the moon
+As long as under this stary sky
+I’ll meet you soon
+
+      </div>
+    </article>
+
+    <!-- SONG CARD 2 -->
+    <article class="writing-card">
+      <div class="writing-card-header">
+        <h2 class="writing-card-title">Are U There?</h2>
+        <span class="writing-card-meta">Song • Old demo • Early RI concept</span>
+      </div>
+      <div class="writing-card-body">
+I created something beautiful
+It was deformed in its distortion 
+Yet remained perfection
+Scratches of a shattered mirror
+Scarecrows placed in honors of horror
+The river of tears on your face
+Tells me a story of your falling in disgrace
+Yet your drowning sorrow 
+Your beauty shows
+That with you I can only follow
+
+
+Hello, God? Are you there?
+For within this past year
+I’ve been lost in fear
+Hello, Messiah? Are you there?
+These people need a savor
+Yet the pastor is playing favors
+Hello? Are you there?
+Or am I just standing here
+Alone in the darkness
+Elope with my fear
+
+
+I tried moving the hands of the clock
+Hoping to slow down time
+Im stuck in shock
+I just want to feel that kiss once more
+Yet under these skies
+I gave you nothing
+And yet in the middle of the night
+You saw me
+You gave me everything 
+You gave me you
+Was your heart breaking all along
+So silently?
+Until it fell out onto the floor
+Bleeding violently
+Yet you stayed
+Always looking beautifully
+
+
+Hello, God? Are you there?
+For within this past year
+I’ve been lost in fear
+Hello, Messiah? Are you there?
+These people need a savor
+Yet the pastor is playing favors
+Hello? Are you there?
+Or am I just standing here
+Alone in the darkness
+Elope with my fear
+      </div>
+    </article>
+
+    <!-- SONG CARD 3 -->
+    <article class="writing-card">
+      <div class="writing-card-header">
+        <h2 class="writing-card-title">Hey God</h2>
+        <span class="writing-card-meta">Song • Unreleased • Book demo</span>
+      </div>
+      <div class="writing-card-body">
+God,
+Hear me now,
+I've lost my crown
+God,
+See me now
+Trying to fulfill the vision
+God,
+Can you king me now?
+
+It took twenty years to put the pen to paper
+Of all the weight I carried not wasted
+I'll put this pain to labor
+A new vision awaits
+I'll answer the creator
+
+So God,
+Can you hear me?
+The echoes of my apology forever lasting
+I give thanks to you for this dream anew
+God,
+King me now
+I got a story to tell
+And I won't fail
+God,
+I know you see me now
+You've deepened the depths of meaning
+The drafts are changing
+But the spirit is cleaning
+Echoes of the demons of prior
+Cast out into the fire
+
+So god, hear me now
+I give thanks for this tale
+Visions of the heart
+Showing below, above, and beyond nothing
+It will no longert tear me apart
+For now I am truly creating
+
+I carried a love for you for so long
+Years gone by waiting
+There was a hate earned, that was instead forgiven
+And now here I stand still creating
+
+So God,
+I thank you now,
+God,
+You gave it all purpose somehow
+I doubted 
+You used my pain to tell a tale
+And now a purpose I serve
+God, I thank you now
+
+      </div>
+    </article>
+
+  </div>
+</section>
+<section id="stories" aria-labelledby="stories-label" style="margin-bottom: 2.5rem;">
+  <div id="stories-label" class="section-label">Short Stories</div>
+
+  <div class="writing-grid">
+    <article class="writing-card">
+      <div class="writing-card-header">
+        <h2 class="writing-card-title">Coming Soon</h2>
+        <span class="writing-card-meta">short story</span>
+      </div>
+      <div class="writing-card-body">
+        <!-- Add your short story cards here -->
+      </div>
+    </article>
+  </div>
+</section>
+
+     
+
+      <!-- Footer: link out to blog / Medium -->
+      <div class="writing-footer">
+        Want more long-form thoughts?
+        <br />
+        <a href="https://medium.com/@YOUR_MEDIUM_USERNAME" target="_blank" rel="noopener">
+          Visit my blog on Medium
+        </a>
+        &nbsp;or explore the blog section on this site.
+      </div>
+    </div>
+  </main>
+    </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.querySelector('[data-nav-toggle]');
+      const menu = document.querySelector('[data-nav-menu]');
+
+      if (toggle && menu) {
+        menu.classList.add('hidden'); // hide menu by default
+
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+  <script>
+  document.querySelectorAll('.writing-nav button').forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+
+      if (targetId === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+
+      // Active button styling
+      document
+        .querySelectorAll('.writing-nav button')
+        .forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
