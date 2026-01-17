@@ -118,8 +118,24 @@
 <body>
     <!-- Splash Page -->
     <section id="splash">
-        <img src="images/logo/crescentsun.png" alt="Sean Griffin Creates Logo" class="max-w-xs mx-auto">
-    </section>
+  <img id="logo"
+       src="images/logo/crescentsun.png"
+       alt="Sean Griffin Creates Logo"
+       class="max-w-xs mx-auto">
+       
+</section>
+<script>
+  const logo = document.getElementById("logo");
+
+  setInterval(() => {
+    logo.src = "images/logo/crescentsun_glitch.gif";
+
+    setTimeout(() => {
+      logo.src = "images/logo/crescentsun.png";
+    }, 1200);
+
+  }, 6000);
+</script>
 
     <!-- Content Section with Nav and Gallery -->
     <section id="content">
