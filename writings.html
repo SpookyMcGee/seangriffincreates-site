@@ -230,6 +230,9 @@
       flex-direction: column;
       gap: 1.5rem;
     }
+    #stories > .writing-grid + .writing-grid {
+  margin-top: 2.5rem;   /* pushes the Coffee grid down from the previous one */
+}
 
     /* CARD STYLING */
     .writing-card {
@@ -254,11 +257,31 @@
       margin: 0;
     }
 
-    .writing-card-meta {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
+/* keep your current desktop behavior */
+.writing-card-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* mobile: allow wrapping so it doesn't force overflow */
+@media (max-width: 600px) {
+  .writing-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  /* important for flex overflow edge cases */
+  .writing-card-header > * {
+    min-width: 0;
+  }
+
+  .writing-card-meta {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
 
     .writing-card-body {
       font-size: 0.95rem;
@@ -567,6 +590,7 @@ If this is something I still believe in
                </div>
         </article>
       </section>
+      <br>
 <!-- SONGS SECTION -->
 <section id="songs" aria-labelledby="songs-label" style="margin-bottom: 2.5rem;">
   <div id="songs-label" class="section-label">Songs</div>
@@ -752,12 +776,10 @@ Elope with my fear
   <div class="writing-grid">
     <article class="writing-card">
       <div class="writing-card-header">
-        <h2 class="writing-card-title">No Worries</h2>
+        <h2 class="writing-card-title">No Worries (You should probably worry)</h2>
         <span class="writing-card-meta">Two brothers. One wrecked car. No context.</span>
       </div>
       <div class="writing-card-body">
-        
-      
 “WHAT THE FUCK.”
 “I’m sorry.”
 “No. What in the actual fuck.”
@@ -793,8 +815,6 @@ Lew’s face is smeared with cream, a folded wrapper in his hand.
 “I’m calling an ambulance.”
 “It’s no worries. I’ll be fine.”
 “You never are.”
-    
-
         
       </div>
     </article>
@@ -804,7 +824,7 @@ Lew’s face is smeared with cream, a folded wrapper in his hand.
       <div class="writing-card-header">
         <h2 class="writing-card-title">Coffee
         </h2>
-        <span class="writing-card-meta">2004 Ameliah has a conversation in a coffee shop somewhere in Los Angeles.</span>
+        <span class="writing-card-meta">Somtime in 2004, Ameliah and Danielle sit down to talk.</span>
       </div>
       <div class="writing-card-body">
 “I don’t even recognize myself anymore,” Ameliah said, staring into her iced coffee, swirling the cubes around.
