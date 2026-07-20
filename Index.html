@@ -264,19 +264,46 @@
 </style>
 
 <!-- Videos Section -->
-<section id="videos" class="py-12">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-8">Videos</h2>
-
-    <div class="flex justify-center">
+ <div class="filmstrip-frame">
+  <div class="sprockets top"></div>
+  <div class="video-wrap">
       <iframe 
         class="aspect-video w-full md:w-1/2" 
         src="https://www.youtube.com/embed/mDOAZwxSfAw" 
         frameborder="0" allowfullscreen>
       </iframe>
-    </div>
-    </div>
-</section>
+  </div>
+  <div class="sprockets bottom"></div>
+</div>
+<style>
+    .filmstrip-frame {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #111;
+  padding: 24px 0;
+}
+
+.sprockets {
+  height: 20px;
+  background-image: radial-gradient(circle, #000 40%, transparent 41%);
+  background-size: 34px 20px;
+  background-repeat: repeat-x;
+  background-position: 12px center;
+}
+
+.video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 12px 0;
+}
+
+.video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+</style>
 
 <!---Writings Section-->
 <section id="writings-link" class="bg-black text-white py-12 text-center">
