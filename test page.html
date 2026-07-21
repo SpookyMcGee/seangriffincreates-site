@@ -304,6 +304,8 @@
   display: block;
 }
 </style>
+
+<!-- Original Videos Section 
 <section id="videos" class="py-12">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-4xl font-bold text-center mb-8">Videos</h2>
@@ -317,8 +319,9 @@
     </div>
     </div>
 </section>
+-->
 
-<!---Writings Section-->
+<!---Writings Section ORIGNAL
 <section id="writings-link" class="bg-black text-white py-12 text-center">
   <h2 class="text-4xl font-bold mb-6">
     <a href="writings.html" class="hover:opacity-80 transition">
@@ -330,7 +333,74 @@
   </p>
 </section>
 
+
+--->
+<section id="writings-link" class="bg-black text-white py-12 text-center">
+  <a href="writings.html" class="notepad-link inline-block hover:opacity-80 transition">
+    <div class="notepad">
+      <div class="notepad-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="filename">writings.txt</span>
+      </div>
+      <div class="notepad-body">
+        <p class="notepad-title">Writings<span class="cursor"></span></p>
+        <p class="notepad-subtitle">Poems, lyrics, and short stories.</p>
+      </div>
+    </div>
+  </a>
 </section>
+<style>
+   .notepad-link { text-decoration: none; }
+
+.notepad {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.notepad-bar {
+  background: #2b2b2b;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #4a4a4a; display: inline-block; }
+.filename { color: #888; font-size: 12px; font-family: monospace; margin-left: 8px; }
+
+.notepad-body { padding: 28px 24px; background: #161616; }
+
+.notepad-title {
+  color: #e8e8e8;
+  font-family: 'Courier New', monospace;
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.notepad-subtitle {
+  color: #999;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px; height: 20px;
+  background: #e8e8e8;
+  vertical-align: -3px;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+</style>
 
 
 
