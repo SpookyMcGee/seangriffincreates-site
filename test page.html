@@ -404,7 +404,7 @@
 
 
 
-<!-- Sites Section -->
+<!-- Sites Section original-->
  <section id="about" class="py-12 px-4 text-center max-w-3xl mx-auto" style="color: white;">
     <h2 class="text-4xl font-bold mb-6">Sites</h2>
 <div id="sites" class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-12 px-4 max-w-6xl mx-auto">
@@ -418,7 +418,7 @@
     </a>
 </div>
 
-<!-- About Me Section -->
+<!-- About Me Section original
 <section id="about" class="py-12 px-4 text-center max-w-3xl mx-auto" style="color: white;">
     <h2 class="text-4xl font-bold mb-6">About Me</h2>
     <div class="about-photo">
@@ -430,6 +430,78 @@ I create things: photos, books, websites, music, and whatever weird ideas refuse
 
 This site is the home base for everything I make. If it sparks emotion, builds a world, or tells a story someone remembers, then I’m exactly where I’m supposed to be.</p>
 </section>
+
+-->
+
+<!-- About Me Section --><div class="about-photo-wrap" style="position:relative; width:220px; height:220px; margin:0 auto;">
+    <div class="about-photo">
+        <img class="mx-auto" src="images/About Me/me.png" alt="Sean Griffin"
+             style="width:220px; height:220px; border-radius:50%; object-fit:cover; position:relative; z-index:2;">
+    </div>
+    <div class="triangle-ring" id="triangleRing" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:1;"></div>
+</div>
+
+<style>
+.about-photo-wrap {
+    position: relative;
+    width: 220px;      /* match this to your image size */
+    height: 220px;
+    margin: 0 auto;
+}
+
+.about-photo img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.triangle-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.triangle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid white; /* triangle color */
+    transform-origin: 0 130px; /* second value = radius, distance from center */
+}
+</style>
+
+<script>
+    const ring = document.getElementById('triangleRing');
+    const count = 12;
+    const radius = 120; // just outside the 220px photo (110px half-width + ~10px gap)
+
+    for (let i = 0; i < count; i++) {
+        const angle = (360 / count) * i;
+        const tri = document.createElement('div');
+        tri.style.position = 'absolute';
+        tri.style.top = '50%';
+        tri.style.left = '50%';
+        tri.style.width = '0';
+        tri.style.height = '0';
+        tri.style.borderLeft = '7px solid transparent';
+        tri.style.borderRight = '7px solid transparent';
+        tri.style.borderBottom = '12px solid white';
+        tri.style.transformOrigin = `0 ${radius}px`;
+        tri.style.transform = `rotate(${angle}deg) translateY(-${radius}px)`;
+        ring.appendChild(tri);
+    }
+</script>
+
 <!--CONTACT ME-->
 <section id="contact">
   <h2>Contact</h2>
